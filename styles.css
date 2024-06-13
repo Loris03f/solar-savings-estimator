@@ -201,6 +201,7 @@ input[type="file"] {
     visibility: visible;
     opacity: 1;
 }
+
 footer {
     background-color: #48c774; /* Grüner Hintergrund */
     color: white;
