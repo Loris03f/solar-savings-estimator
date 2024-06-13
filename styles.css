@@ -201,3 +201,21 @@ input[type="file"] {
     visibility: visible;
     opacity: 1;
 }
+footer {
+    background-color: #48c774; /* Grüner Hintergrund */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
