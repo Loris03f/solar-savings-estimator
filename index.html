@@ -54,8 +54,7 @@
             <button id="estimatePriceBtn" class="active">Estimate Price</button>
             <button id="bookCallBtn">Book a Free Call</button>
         </div>
-
-        <div id="estimatePriceForm" class="form-container active">
+                <div id="estimatePriceForm" class="form-container active">
             <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
                 <label for="utilityBill">Upload Your Utility Bill <span class="tooltip" data-tooltip="Take a photo of your bill or upload a PDF file. Use a scanner or your phone's camera to capture the image."><span class="tooltip-circle">i</span></span></label>
                 <input type="file" id="utilityBill" name="utilityBill">
@@ -104,7 +103,7 @@
                 <input type="file" id="utilityBillCall" name="utilityBillCall">
 
                 <label for="additionalInfoFilesCall">Additional Information or Files (e.g., photos of your house) <span class="tooltip" data-tooltip="Attach any additional information or files that could help with the estimate. You can upload multiple files if needed."><span class="tooltip-circle">i</span></span></label>
-                <textarea id="additionalInfoFilesCall" name="additionalInformation..."></textarea>
+                <textarea id="additionalInfoFilesCall" name="additionalInfoFilesCall" placeholder="Any additional information..."></textarea>
                 <input type="file" id="additionalFilesCall" name="additionalFilesCall" multiple>
 
                 <button type="submit" class="submit-btn">Submit</button>
