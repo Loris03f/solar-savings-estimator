@@ -1,172 +1,116 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #e5f7e9; /* Hellgrüner Hintergrund */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Savings Estimator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Solar Savings Estimator</h1>
+        <div class="header-buttons">
+            <button id="howItWorksBtn" class="info-btn">How does it work?</button>
+            <button id="whyFreeBtn" class="info-btn">Why for Free?</button>
+            <button id="contactBtn" class="info-btn">Any Other Questions?</button>
+        </div>
 
-header {
-    background-color: #48c774; /* Grüner Hintergrund */
-    color: white;
-    padding: 1em;
-    text-align: center;
-}
+        <div id="howItWorksModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>To find out how much you can save with solar energy, simply fill out the form with your utility bill, location, roof orientation, roof tilt, and roof size. These details help our professionals analyze your data and provide you with a tailored recommendation, including potential savings. If you prefer to schedule a call, please fill out the 'Book a Free Call' form, and our experts will contact you to discuss your potential savings in detail.</p>
+            </div>
+        </div>
 
-.header-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-}
+        <div id="whyFreeModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Our marketing is literally showing you directly how good our deals and possibilities are. The main reason people don't go solar is because they think the deal looks too good to be true. And we understand that, so we know that seeing how much you can save with solar energy will spark your interest in switching to solar. Therefore, our initial service, including the estimation and the first consultation call, is completely free because we believe in the value you'll find in going solar with us. And if you are not interested, you won't lose anything, not even your information, because we are not allowed to give or sell it to anyone. So why not?</p>
+            </div>
+        </div>
 
-.info-btn {
-    background-color: #3cae64; /* Etwas dunklerer Grünton */
-    border: none;
-    color: white;
-    padding: 1em 2em;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    margin: 0.5em 0;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-}
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+                    <h2>Write Us a Mail</h2>
+                    <label for="contactEmail">Your Email Address</label>
+                    <input type="email" id="contactEmail" name="contactEmail" placeholder="your.email@example.com" required>
+                    
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" name="contactSubject" placeholder="Subject" required>
+                    
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="contactMessage" placeholder="Your message..." required></textarea>
+                    
+                    <button type="submit" class="submit-btn">Send Email</button>
+                </form>
+            </div>
+        </div>
+    </header>
 
-.info-btn:hover {
-    background-color: #349c58; /* Noch dunklerer Grünton beim Hover */
-}
+    <main>
+        <div class="buttons-container">
+            <button id="estimatePriceBtn" class="active">Estimate Price</button>
+            <button id="bookCallBtn">Book a Free Call</button>
+        </div>
+                <div id="estimatePriceForm" class="form-container active">
+            <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
+                <label for="utilityBill">Upload Your Utility Bill <span class="tooltip" data-tooltip="Take a photo of your bill or upload a PDF file. Use a scanner or your phone's camera to capture the image."><span class="tooltip-circle">i</span></span></label>
+                <input type="file" id="utilityBill" name="utilityBill">
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
-}
+                <label for="location">Location (e.g., California, USA) <span class="tooltip" data-tooltip="Enter the state or region where your property is located. You can use your address to help determine this."><span class="tooltip-circle">i</span></span></label>
+                <input type="text" id="location" name="location" placeholder="California, USA">
 
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 8px;
-}
+                <label for="roofOrientation">Roof Orientation (e.g., South) <span class="tooltip" data-tooltip="Specify the direction your roof faces (e.g., North, South, East, West). Use a compass or a compass app on your smartphone to find the orientation."><span class="tooltip-circle">i</span></span></label>
+                <input type="text" id="roofOrientation" name="roofOrientation" placeholder="South">
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+                <label for="roofTilt">Estimated Roof Tilt (e.g., 30 degrees) <span class="tooltip" data-tooltip="Enter the angle of your roof's tilt in degrees. You can estimate this using a protractor or a smartphone app."><span class="tooltip-circle">i</span></span></label>
+                <input type="text" id="roofTilt" name="roofTilt" placeholder="30 degrees">
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+                <label for="roofSize">Estimated Roof Size (e.g., 200 square meters) <span class="tooltip" data-tooltip="Enter the approximate size of your roof in square meters or square feet. Measure the length and width of your roof and multiply them to get the area."><span class="tooltip-circle">i</span></span></label>
+                <input type="text" id="roofSize" name="roofSize" placeholder="200 square meters">
 
-.buttons-container {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 2em;
-}
+                <label for="email">Email Address <span class="tooltip" data-tooltip="Provide your email address to receive the estimate. Ensure it's an address you check frequently."><span class="tooltip-circle">i</span></span></label>
+                <input type="email" id="email" name="email" placeholder="you@example.com">
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 1em;
-}
+                <label for="phone">Phone Number (optional) <span class="tooltip" data-tooltip="Provide your phone number to receive a call. This is optional but recommended for quicker communication."><span class="tooltip-circle">i</span></span></label>
+                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
 
-label {
-    font-weight: bold;
-}
+                <label for="additionalInfoFiles">Additional Information or Files (e.g., photos of your house) <span class="tooltip" data-tooltip="Attach any additional information or files that could help with the estimate. You can upload multiple files if needed."><span class="tooltip-circle">i</span></span></label>
+                <textarea id="additionalInfoFiles" name="additionalInfoFiles" placeholder="Any additional information..."></textarea>
+                <input type="file" id="additionalFiles" name="additionalFiles" multiple>
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="datetime-local"],
-textarea {
-    width: 100%;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
 
-input[type="file"] {
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-}
+        <div id="bookCallForm" class="form-container">
+            <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
+                <label for="name">Your Name <span class="tooltip" data-tooltip="Enter your full name. Ensure it's the name you use on official documents."><span class="tooltip-circle">i</span></span></label>
+                <input type="text" id="name" name="name" placeholder="John Doe">
 
-.submit-btn {
-    background-color: #48c774; /* Grüner Hintergrund */
-    border: none;
-    color: white;
-    padding: 1em 2em;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    margin: 0.5em 0;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-}
+                <label for="emailCall">Email Address <span class="tooltip" data-tooltip="Provide your email address to confirm the call. Ensure it's an address you check frequently."><span class="tooltip-circle">i</span></span></label>
+                <input type="email" id="emailCall" name="emailCall" placeholder="you@example.com">
 
-.submit-btn:hover {
-    background-color: #349c58; /* Dunklerer Grünton beim Hover */
-}
+                <label for="phoneCall">Phone Number <span class="tooltip" data-tooltip="Provide your phone number to receive a call. Ensure it's a number you can be reached at during the day."><span class="tooltip-circle">i</span></span></label>
+                <input type="tel" id="phoneCall" name="phoneCall" placeholder="(123) 456-7890">
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
+                <label for="callDateTime">Preferred Call Date and Time <span class="tooltip" data-tooltip="Select your preferred date and time for the call. Make sure to choose a time you are available."><span class="tooltip-circle">i</span></span></label>
+                <input type="datetime-local" id="callDateTime" name="callDateTime">
 
-.tooltip .tooltip-circle {
-    display: inline-block;
-    background-color: #3cae64; /* Etwas dunklerer Grünton */
-    color: white;
-    border-radius: 50%;
-    padding: 0.2em 0.5em;
-    margin-left: 0.5em;
-}
+                <label for="utilityBillCall">Upload Your Utility Bill (optional) <span class="tooltip" data-tooltip="Take a photo of your bill or upload a PDF file. This helps enormously for the call."><span class="tooltip-circle">i</span></span></label>
+                <input type="file" id="utilityBillCall" name="utilityBillCall">
 
-.tooltip:hover .tooltip-circle {
-    background-color: #349c58; /* Noch dunklerer Grünton beim Hover */
-}
+                <label for="additionalInfoFilesCall">Additional Information or Files (e.g., photos of your house) <span class="tooltip" data-tooltip="Attach any additional information or files that could help with the estimate. You can upload multiple files if needed."><span class="tooltip-circle">i</span></span></label>
+                <textarea id="additionalInfoFilesCall" name="additionalInfoFilesCall" placeholder="Any additional information..."></textarea>
+                <input type="file" id="additionalFilesCall" name="additionalFilesCall" multiple>
 
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; 
-    left: 50%;
-    margin-left: -100px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </main>
 
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
+    <script src="script.js"></script>
+</body>
+</html>
