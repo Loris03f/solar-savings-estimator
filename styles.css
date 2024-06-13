@@ -82,6 +82,36 @@ header {
     margin-top: 2em;
 }
 
+.switch-btn {
+    background-color: #3cae64; /* Etwas dunklerer Grünton */
+    border: none;
+    color: white;
+    padding: 1em 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.switch-btn:hover {
+    background-color: #349c58; /* Noch dunklerer Grünton beim Hover */
+}
+
+.switch-btn.active {
+    background-color: #349c58; /* Dunklerer Grünton für aktiven Button */
+}
+
+.form-container {
+    display: none;
+}
+
+.form-container.active {
+    display: block;
+}
+
 form {
     display: flex;
     flex-direction: column;
