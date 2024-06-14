@@ -19,25 +19,37 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Modal functionality
-    const modals = document.querySelectorAll('.modal');
-    const modalBtns = document.querySelectorAll('.info-btn');
-    const closeBtns = document.querySelectorAll('.close');
+    const contactModal = document.getElementById("contactModal");
+    const howItWorksModal = document.getElementById("howItWorksModal");
+    const whyFreeModal = document.getElementById("whyFreeModal");
 
-    modalBtns.forEach((btn, i) => {
-        btn.addEventListener('click', () => {
-            modals[i].style.display = 'block';
+    const contactBtn = document.getElementById("contactBtn");
+    const howItWorksBtn = document.getElementById("howItWorksBtn");
+    const whyFreeBtn = document.getElementById("whyFreeBtn");
+
+    const closeButtons = document.querySelectorAll(".close");
+
+    contactBtn.addEventListener("click", function() {
+        contactModal.style.display = "block";
+    });
+
+    howItWorksBtn.addEventListener("click", function() {
+        howItWorksModal.style.display = "block";
+    });
+
+    whyFreeBtn.addEventListener("click", function() {
+        whyFreeModal.style.display = "block";
+    });
+
+    closeButtons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            btn.parentElement.parentElement.style.display = "none";
         });
     });
 
-    closeBtns.forEach((btn, i) => {
-        btn.addEventListener('click', () => {
-            modals[i].style.display = 'none';
-        });
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target.classList.contains('modal')) {
-            e.target.style.display = 'none';
+    window.addEventListener("click", function(event) {
+        if (event.target.classList.contains("modal")) {
+            event.target.style.display = "none";
         }
     });
 });
