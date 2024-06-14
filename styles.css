@@ -12,6 +12,7 @@ header {
     padding: 1em;
     text-align: center;
 }
+
 .header-buttons {
     display: flex;
     justify-content: center;
@@ -69,6 +70,7 @@ header {
 /* Main content styles */
 main {
     padding: 20px;
+    min-height: 80vh; /* Ensures that main content takes at least 80% of the viewport height */
 }
 
 .buttons-container {
@@ -167,7 +169,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
     width: 100%;
+    position: relative;
     bottom: 0;
 }
