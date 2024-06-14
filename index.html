@@ -25,7 +25,7 @@
 
         <!-- Einbettung des Google Formulars für Estimate Price -->
         <div id="estimatePriceForm" class="form-container active">
-            <iframe src="https://forms.gle/tVzveESYne8PtDyT6" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd2NEw75M_zpi9SMwtyloqcp2j5RP-MQ79X0ZnKgqtzfYvoKQ/viewform?usp=sf_link" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
 
         <!-- Einbettung des Google Formulars für Book a Free Call -->
@@ -34,6 +34,7 @@
         </div>
     </main>
 
+    <!-- Modal für 'Any Other Questions?' -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -42,55 +43,25 @@
         </div>
     </div>
 
+    <!-- Modals für 'How does it work?' und 'Why for Free?' -->
+    <div id="howItWorksModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>To get a free and quick rough estimate, simply fill out the form with your details and submit it. Our top solar professionals will review your information and provide feedback within 1-2 days. No obligations, no risks.</p>
+            <p>If you prefer to schedule a call, please fill out the 'Book a Free Call' form. During the call, you'll have the opportunity to discuss your situation with our solar experts and get insights into the benefits of switching to solar. This service is also free and without any obligations. We will contact you shortly.</p>
+        </div>
+    </div>
+
+    <div id="whyFreeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Our marketing is literally showing you directly how good our deals and possibilities are. The main reason people don't go solar is because they think the deal looks too good to be true. And we understand that, so we know that seeing how much you can save with solar energy will spark your interest in switching to solar. Therefore, our initial service, including the estimation and the first consultation call, is completely free because we believe in the value you'll find in going solar with us. And if you are not interested, you won't lose anything, not even your information, because we are not allowed to give or sell it to anyone. So why not?</p>
+        </div>
+    </div>
+
     <footer>
         <p>Your data is secure and protected. We use SSL encryption to ensure your information is safe. For more details, please read our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         <p><a href="https://www.linkedin.com/in/ramon-ferrari-58b8712b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Follow us on LinkedIn</a></p>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const estimatePriceBtn = document.getElementById("estimatePriceBtn");
-            const bookCallBtn = document.getElementById("bookCallBtn");
-            const estimatePriceForm = document.getElementById("estimatePriceForm");
-            const bookCallForm = document.getElementById("bookCallForm");
-
-            estimatePriceBtn.addEventListener("click", function() {
-                estimatePriceForm.classList.add("active");
-                bookCallForm.classList.remove("active");
-                estimatePriceBtn.classList.add("active");
-                bookCallBtn.classList.remove("active");
-            });
-
-            bookCallBtn.addEventListener("click", function() {
-                bookCallForm.classList.add("active");
-                estimatePriceForm.classList.remove("active");
-                bookCallBtn.classList.add("active");
-                estimatePriceBtn.classList.remove("active");
-            });
-
-            // Modal functionality
-            const modals = document.querySelectorAll('.modal');
-            const modalBtns = document.querySelectorAll('.info-btn');
-            const closeBtns = document.querySelectorAll('.close');
-
-            modalBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => {
-                    modals[i].style.display = 'block';
-                });
-            });
-
-            closeBtns.forEach((btn, i) => {
-                btn.addEventListener('click', () => {
-                    modals[i].style.display = 'none';
-                });
-            });
-
-            window.addEventListener('click', (e) => {
-                if (e.target.classList.contains('modal')) {
-                    e.target.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
