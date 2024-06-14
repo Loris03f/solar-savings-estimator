@@ -66,7 +66,7 @@
         <div id="estimatePriceForm" class="form-container active">
             <form action="https://formspree.io/f/xjvnneqw" method="POST" enctype="multipart/form-data">
                 <label for="utilityBill">Upload Your Utility Bill <span class="tooltip" data-tooltip="Take a photo of your bill or upload a PDF file. Use a scanner or your phone's camera to capture the image."><span class="tooltip-circle">i</span><span class="tooltip-text">Take a photo of your bill or upload a PDF file. Use a scanner or your phone's camera to capture the image.</span></span></label>
-                <input type="file" id="utilityBill" name="utilityBill">
+                <input type="file" id="utilityBill" name="utilityBill" accept="image/png, image/jpeg, application/pdf">
 
                 <label for="location">Location (e.g., California, USA) <span class="tooltip" data-tooltip="Enter the state or region where your property is located. You can use your address to help determine this."><span class="tooltip-circle">i</span><span class="tooltip-text">Enter the state or region where your property is located. You can use your address to help determine this.</span></span></label>
                 <input type="text" id="location" name="location" placeholder="California, USA">
@@ -86,7 +86,7 @@
                 <input type="datetime-local" id="preferredDateTime" name="preferredDateTime">
 
                 <label for="callUtilityBill">Upload Your Utility Bill (optional) <span class="tooltip" data-tooltip="Take a photo of your bill or upload a PDF file. Use a scanner or your phone's camera to capture the image."><span class="tooltip-circle">i</span><span class="tooltip-text">Take a photo of your bill or upload a PDF file. Use a scanner or your phone's camera to capture the image.</span></span></label>
-                <input type="file" id="callUtilityBill" name="callUtilityBill">
+                <input type="file" id="callUtilityBill" name="callUtilityBill" accept="image/png, image/jpeg, application/pdf">
 
                 <label for="additionalCallInfo">Additional Information <span class="tooltip" data-tooltip="Provide any additional information that might be relevant for the call."><span class="tooltip-circle">i</span><span class="tooltip-text">Provide any additional information that might be relevant for the call.</span></span></label>
                 <textarea id="additionalCallInfo" name="additionalCallInfo" placeholder="Any additional information..."></textarea>
