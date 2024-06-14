@@ -12,7 +12,6 @@ header {
     padding: 1em;
     text-align: center;
 }
-
 .header-buttons {
     display: flex;
     justify-content: center;
